@@ -1,21 +1,28 @@
 from playwright.sync_api import sync_playwright
-import os
-
-
-
 
 def main():
 
-    # with sync_playwright() as p:
+    with sync_playwright() as p:
 
-        # browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
 
-        # !!!
-        # na page.locator(selector) se dá použít funkce .text_content(), která vypíše text daného prvku
-        # !!!
+        log = "Jarmil"
+        pasw = "Admin123"
 
+        page.goto("https://js-trebesin.github.io/playwright-exam/")
 
-        # browser.close()
+        page.fill("input['id =login']", log)
+        page.fill("input['id =login']", pasw)
+
+        page.click("button['class=login-btn']")
+        page.wait_for_timeout(1000)
+
+        secr = page.get_by_placeholder("psst").text_content()
+        print(secr)
+
+        input("Klikni na cokoliv pro zavření prohlížeče")
+        browser.close()
     
 
 if __name__ == "__main__":
