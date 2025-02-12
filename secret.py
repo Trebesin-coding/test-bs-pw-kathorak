@@ -18,8 +18,6 @@ def main():
         page.click("button['class=login-btn']")
         page.wait_for_timeout(1000)
 
-        secr = page.get_by_placeholder("psst").text_content()
-        print(secr)
 
         input("Klikni na cokoliv pro zavření prohlížeče")
         browser.close()
