@@ -6,7 +6,7 @@ import requests
 def main():
 
     response = requests.get("https://js-trebesin.github.io/bsoup-exam/")
-    soup = BeautifulSoup(response.content, "html.parser") #vytvoří polévku:) přeloží html pro soup 
+    soup = BeautifulSoup(response.content, "html.parser") #vytvoří polévku:) přeloží html pro soup a projde stránku
 
     ingred = soup.find_all("h2")
     ingred_txt = []
