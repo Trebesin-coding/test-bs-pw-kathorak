@@ -1,5 +1,6 @@
 from playwright.sync_api import sync_playwright
 
+
 def main():
 
     with sync_playwright() as p:
@@ -14,14 +15,15 @@ def main():
 
         page.fill("input['id =login']", log)
         page.fill("input['id =login']", pasw)
+        # U: proč vyplňujete pass do inputu login?
+        # Uvozovky jsou jen u názvu classy/id, tzn. "input[id='login']"
 
         page.click("button['class=login-btn']")
         page.wait_for_timeout(1000)
 
-
         input("Klikni na cokoliv pro zavření prohlížeče")
         browser.close()
-    
+
 
 if __name__ == "__main__":
     main()
